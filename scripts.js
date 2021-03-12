@@ -13,9 +13,9 @@ window.addEventListener("load", function(){
     let missionAbort = document.getElementById('missionAbort')
     let astroChat = document.getElementById('astroChat')
     let up = document.getElementById('up');
-    let up = document.getElementById('down');
-    let up = document.getElementById('left');
-    let up = document.getElementById('right');
+    let down = document.getElementById('down');
+    let  left = document.getElementById('left');
+    let  right = document.getElementById('right');
 
     takeOff.addEventListener("click", function(){
         let result = window.confirm("WARNING: ARE YOU READY FOR TAKE OFF?");
@@ -34,6 +34,8 @@ window.addEventListener("load", function(){
             astroChat.innerText = "Welcome Back!"
             backgroundColor.style.backgroundColor = "Green";
             shuttleHeight.innerText = '0';
+            rocketImg.style.left = "0px";
+            rocketImg.style.bottom = "0px";
         }
     })
 
@@ -44,6 +46,32 @@ window.addEventListener("load", function(){
             astroChat.innerText = "Mission was aborted. Please refresh page to start again."
             backgroundColor.style.backgroundColor = "Red";
             shuttleHeight.innerText = '0';
+            rocketImg.style.left = "0px";
+            rocketImg.style.bottom = "0px";
         }
     })
+
+    up.addEventListener("click", function(){
+        let moveUp = parseInt(rocketImg.style.bottom) + "10px";
+        rocketImg.style.bottom = moveUp;
+        shuttleHeight.innerText = parseInt(shuttleHeight.innerText) + 10000
+    });
+
+    down.addEventListener("click", function(){
+        let moveDown = parseInt(rocketImg.style.top) - "10px";
+        rocketImg.style.top = moveDown;
+        shuttleHeight.innerText = parseInt(shuttleHeight.innerText) - 10000
+    })
+
+    left.addEventListener("click", function(){
+        let moveLeft = parseInt(rocketImg.style.left) - "10px";
+        rocketImg.style.left = moveLeft;
+    })
+
+    right.addEventListener("click", function(){
+        let moveRight = parseInt(rocketImg.style.right) + "10px";
+        rocketImg.style.right = moveRight;
+    })
+
+   
 })
